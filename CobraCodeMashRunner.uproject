@@ -3,6 +3,17 @@
 	"EngineAssociation": "5.4",
 	"Category": "",
 	"Description": "",
+	"Modules": [
+		{
+			"Name": "CobraCodeMashRunner",
+			"Type": "Runtime",
+			"LoadingPhase": "Default",
+			"AdditionalDependencies": [
+				"Paper2D",
+				"Engine"
+			]
+		}
+	],
 	"Plugins": [
 		{
 			"Name": "ModelingToolsEditorMode",
