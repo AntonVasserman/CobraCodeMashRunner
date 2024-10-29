@@ -38,13 +38,24 @@ void AMRRunnerCharacter::Tick(float DeltaSeconds)
 
 	AddMovementInput(FVector(1.f, 0.f, 0.f), 1.f);
 
-	if (GetCharacterMovement()->MaxWalkSpeed > 0.f)
+	GetCharacterMovement()->MaxWalkSpeed = FMath::Max(GetCharacterMovement()->MaxWalkSpeed - SpeedDecreaseMultiplier * DeltaSeconds, 0.f);
+	// TODO (Refactor): Change this to not run on every tick but only when speed actually changes
+	GetSprite()->SetFlipbook(
+		GetCharacterMovement()->Velocity.Length() > 0.f ?
+			UMashRunnerStatics::GetRunnerRunPaperFlipbook() :
+			UMashRunnerStatics::GetRunnerIdlePaperFlipbook());
+	// TODO (Refactor): Change this to a bool for simpler checking
+	if (GetSprite()->GetFlipbook() == UMashRunnerStatics::GetRunnerRunPaperFlipbook())
 	{
-		GetCharacterMovement()->MaxWalkSpeed -= SpeedDecreaseMultiplier * DeltaSeconds;
+		GetSprite()->SetPlayRate(GetCharacterMovement()->MaxWalkSpeed / MaxSpeed);
+	}
+	else
+	{
+		GetSprite()->SetPlayRate(1.f);
 	}
 }
 
 void AMRRunnerCharacter::IncreaseSpeed()
 {
-	GetCharacterMovement()->MaxWalkSpeed += SpeedIncreasePerTab;
+	GetCharacterMovement()->MaxWalkSpeed = FMath::Min(GetCharacterMovement()->MaxWalkSpeed + SpeedIncreasePerTab, MaxSpeed);
 }

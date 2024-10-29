@@ -21,6 +21,7 @@ public:
 	virtual void Tick(float DeltaSeconds) override;
 
 private:
+	float MaxSpeed = 1500.f;
 	float SpeedIncreasePerTab = 50.f;
 	float SpeedDecreaseMultiplier = 250.f;
 

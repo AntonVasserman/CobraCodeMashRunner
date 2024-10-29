@@ -33,4 +33,9 @@ public:
 	{
 		return LoadObject<UPaperFlipbook>(nullptr, TEXT("/Game/MashRunner/Art/Characters/PFB_Runner_Idle.PFB_Runner_Idle"));
 	}
+
+	FORCEINLINE static UPaperFlipbook* GetRunnerRunPaperFlipbook()
+	{
+		return LoadObject<UPaperFlipbook>(nullptr, TEXT("/Game/MashRunner/Art/Characters/PFB_Runner_Run.PFB_Runner_Run"));
+	}
 };
