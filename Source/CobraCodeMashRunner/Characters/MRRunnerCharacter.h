@@ -14,7 +14,15 @@ class COBRACODEMASHRUNNER_API AMRRunnerCharacter : public APaperCharacter
 
 public:
 	AMRRunnerCharacter();
-
+	
+	virtual void OnConstruction(const FTransform& Transform) override;
 	void PowerLeft();
 	void PowerRight();
+	virtual void Tick(float DeltaSeconds) override;
+
+private:
+	float SpeedIncreasePerTab = 50.f;
+	float SpeedDecreaseMultiplier = 250.f;
+
+	void IncreaseSpeed();
 };
