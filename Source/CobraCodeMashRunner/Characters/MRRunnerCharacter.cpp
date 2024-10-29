@@ -24,12 +24,22 @@ void AMRRunnerCharacter::OnConstruction(const FTransform& Transform)
 
 void AMRRunnerCharacter::PowerLeft()
 {
-	IncreaseSpeed();
+	// TODO (Refactor): Move this to the PlayerController
+	if (LastInput != EInput::Left)
+	{
+		IncreaseSpeed();
+		LastInput = EInput::Left;
+	}
 }
 
 void AMRRunnerCharacter::PowerRight()
 {
-	IncreaseSpeed();
+	// TODO (Refactor): Move this to the PlayerController
+	if (LastInput != EInput::Right)
+	{
+		IncreaseSpeed();
+		LastInput = EInput::Right;
+	}
 }
 
 void AMRRunnerCharacter::Tick(float DeltaSeconds)
