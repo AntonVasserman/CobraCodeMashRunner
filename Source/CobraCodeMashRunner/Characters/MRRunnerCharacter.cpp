@@ -48,7 +48,9 @@ void AMRRunnerCharacter::Tick(float DeltaSeconds)
 
 	AddMovementInput(FVector(1.f, 0.f, 0.f), 1.f);
 
-	GetCharacterMovement()->MaxWalkSpeed = FMath::Max(GetCharacterMovement()->MaxWalkSpeed - SpeedDecreaseMultiplier * DeltaSeconds, 0.f);
+	const float CurrentMaxWalkSpeed = GetCharacterMovement()->MaxWalkSpeed;
+	const float NewMaxWalkSpeed = CurrentMaxWalkSpeed - SpeedDecreaseMultiplier * DeltaSeconds * SpeedDecreaseCurve->GetFloatValue(CurrentMaxWalkSpeed);
+	GetCharacterMovement()->MaxWalkSpeed = FMath::Max(NewMaxWalkSpeed, 0.f);
 	// TODO (Refactor): Change this to not run on every tick but only when speed actually changes
 	GetSprite()->SetFlipbook(
 		GetCharacterMovement()->Velocity.Length() > 0.f ?
@@ -67,5 +69,7 @@ void AMRRunnerCharacter::Tick(float DeltaSeconds)
 
 void AMRRunnerCharacter::IncreaseSpeed()
 {
-	GetCharacterMovement()->MaxWalkSpeed = FMath::Min(GetCharacterMovement()->MaxWalkSpeed + SpeedIncreasePerTab, MaxSpeed);
+	const float CurrentMaxWalkSpeed = GetCharacterMovement()->MaxWalkSpeed;
+	const float NewMaxWalkSpeed = CurrentMaxWalkSpeed + SpeedIncreaseCurve->GetFloatValue(CurrentMaxWalkSpeed) * SpeedIncreasePerTab;
+	GetCharacterMovement()->MaxWalkSpeed = FMath::Min(NewMaxWalkSpeed, MaxSpeed);
 }

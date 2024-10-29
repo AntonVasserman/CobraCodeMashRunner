@@ -38,4 +38,15 @@ public:
 	{
 		return LoadObject<UPaperFlipbook>(nullptr, TEXT("/Game/MashRunner/Art/Characters/PFB_Runner_Run.PFB_Runner_Run"));
 	}
+
+
+	FORCEINLINE static UCurveFloat* GetSpeedDecreaseCurveFloat()
+	{
+		return LoadObject<UCurveFloat>(nullptr, TEXT("/Game/MashRunner/Characters/Curve_SpeedDecrease_Float.Curve_SpeedDecrease_Float"));
+	}
+
+	FORCEINLINE static UCurveFloat* GetSpeedIncreaseCurveFloat()
+	{
+		return LoadObject<UCurveFloat>(nullptr, TEXT("/Game/MashRunner/Characters/Curve_SpeedIncrease_Float.Curve_SpeedIncrease_Float"));
+	}
 };
