@@ -21,7 +21,7 @@ public:
 
 	FORCEINLINE static USoundCue* GetFootstepsSoundCue()
 	{
-		return LoadObject<USoundCue>(nullptr, TEXT("/Game/MashRunner/Core/Inputs/Actions/IA_PowerLeft.IA_PowerLeft"));
+		return LoadObject<USoundCue>(nullptr, TEXT("/Game/MashRunner/Audio/Footsteps/A_Steps_Cue.A_Steps_Cue"));
 	}
 	
 	FORCEINLINE static UInputAction* GetPowerLeftInputAction()

@@ -9,6 +9,8 @@
 
 AMRRunnerCharacter::AMRRunnerCharacter()
 {
+	PrimaryActorTick.bCanEverTick = true;
+	
 	// Setup PaperFlipbookComponent
 	GetSprite()->SetFlipbook(UMashRunnerStatics::GetRunnerIdlePaperFlipbook());
 	GetSprite()->SetRelativeLocation(FVector(0.f, 0.f, 30.f));
@@ -64,12 +66,14 @@ void AMRRunnerCharacter::Tick(float DeltaSeconds)
 	UpdateFlipbook();
 	
 	// TODO (Refactor): Change this to a bool for simpler checking
-	if (bPlayFootstepSound &&
-		GetSprite()->GetFlipbook() == UMashRunnerStatics::GetRunnerRunPaperFlipbook() &&
+	if (GetSprite()->GetFlipbook() == UMashRunnerStatics::GetRunnerRunPaperFlipbook() &&
 		(GetSprite()->GetPlaybackPositionInFrames() == 1 || GetSprite()->GetPlaybackPositionInFrames() == 5))
 	{
-		UGameplayStatics::PlaySound2D(GetWorld(), FootstepsSoundCue);
-		bPlayFootstepSound = false;
+		if (bPlayFootstepSound)
+		{
+			UGameplayStatics::PlaySound2D(GetWorld(), FootstepsSoundCue);
+			bPlayFootstepSound = false;
+		}
 	}
 	else
 	{
