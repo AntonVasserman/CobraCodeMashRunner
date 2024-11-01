@@ -14,8 +14,6 @@ class COBRACODEMASHRUNNER_API AMRPlayerRunner : public AMRRunnerCharacter
 public:
 	AMRPlayerRunner();
 
-	virtual void OnConstruction(const FTransform& Transform) override;
-
 protected:
 	UPROPERTY(VisibleAnywhere)
 	class USpringArmComponent* SpringArmComp = nullptr;

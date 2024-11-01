@@ -5,7 +5,7 @@
 #include "CoreMinimal.h"
 #include "InputMappingContext.h"
 #include "PaperFlipbook.h"
-
+#include "Sound/SoundCue.h"
 #include "MashRunnerStatics.generated.h"
 
 UCLASS(MinimalAPI)
@@ -19,6 +19,11 @@ public:
 		return LoadObject<UInputMappingContext>(nullptr, TEXT("/Game/MashRunner/Core/Inputs/IMC_DefaultMappingContext.IMC_DefaultMappingContext"));
 	}
 
+	FORCEINLINE static USoundCue* GetFootstepsSoundCue()
+	{
+		return LoadObject<USoundCue>(nullptr, TEXT("/Game/MashRunner/Core/Inputs/Actions/IA_PowerLeft.IA_PowerLeft"));
+	}
+	
 	FORCEINLINE static UInputAction* GetPowerLeftInputAction()
 	{
 		return LoadObject<UInputAction>(nullptr, TEXT("/Game/MashRunner/Core/Inputs/Actions/IA_PowerLeft.IA_PowerLeft"));
@@ -38,7 +43,6 @@ public:
 	{
 		return LoadObject<UPaperFlipbook>(nullptr, TEXT("/Game/MashRunner/Art/Characters/PFB_Runner_Run.PFB_Runner_Run"));
 	}
-
 
 	FORCEINLINE static UCurveFloat* GetSpeedDecreaseCurveFloat()
 	{

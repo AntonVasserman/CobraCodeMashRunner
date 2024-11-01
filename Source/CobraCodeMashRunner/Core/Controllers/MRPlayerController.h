@@ -3,10 +3,9 @@
 #pragma once
 
 #include "CoreMinimal.h"
-
-#include "GameFramework/PlayerController.h"
 #include "InputMappingContext.h"
 #include "CobraCodeMashRunner/Core/Utility/MashRunnerStatics.h"
+#include "GameFramework/PlayerController.h"
 #include "MRPlayerController.generated.h"
 
 UCLASS()
