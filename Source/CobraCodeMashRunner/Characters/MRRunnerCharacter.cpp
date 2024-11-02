@@ -5,6 +5,7 @@
 #include "CobraCodeMashRunner/Core/Utility/MashRunnerStatics.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "PaperFlipbookComponent.h"
+#include "CobraCodeMashRunner/Core/Controllers/MRAIController.h"
 #include "Kismet/GameplayStatics.h"
 
 AMRRunnerCharacter::AMRRunnerCharacter()
@@ -17,6 +18,8 @@ AMRRunnerCharacter::AMRRunnerCharacter()
 	
 	// Setup Character Movement Component
 	GetCharacterMovement()->MaxWalkSpeed = 0.f;
+
+	AIControllerClass = AMRAIController::StaticClass();
 }
 
 void AMRRunnerCharacter::PowerLeft()
