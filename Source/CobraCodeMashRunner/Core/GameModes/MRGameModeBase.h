@@ -18,6 +18,8 @@ public:
 	FOnRaceStarted OnRaceStarted;
 	FOnWinnerAnnounced OnWinnerAnnounced;
 	
+	AMRGameModeBase();
+	
 	void AnnounceWinner(int WinnerIndex);
 	void RestartCurrentLevel();
 	void StartRace();

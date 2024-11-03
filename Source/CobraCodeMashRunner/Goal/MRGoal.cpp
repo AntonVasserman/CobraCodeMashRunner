@@ -14,12 +14,12 @@ AMRGoal::AMRGoal()
 	PrimaryActorTick.bCanEverTick = true;
 
 	// Setup Paper Sprite Component
-	PaperSpriteComp = CreateDefaultSubobject<UPaperSpriteComponent>(TEXT("Paper Sprite Component"));
+	PaperSpriteComp = CreateDefaultSubobject<UPaperSpriteComponent>(TEXT("Paper Sprite"));
 	PaperSpriteComp->SetupAttachment(RootComponent);
 	PaperSpriteComp->SetSprite(UMashRunnerStatics::GetGoalConnectedSprite());
 
 	// Setup Box Collision Component
-	BoxComp = CreateDefaultSubobject<UBoxComponent>(TEXT("Box Component"));
+	BoxComp = CreateDefaultSubobject<UBoxComponent>(TEXT("Box"));
 	BoxComp->SetupAttachment(PaperSpriteComp);
 	BoxComp->SetBoxExtent(FVector(10.f, 300.f, 50.f));
 }

@@ -2,7 +2,14 @@
 
 #include "MRGameModeBase.h"
 
+#include "CobraCodeMashRunner/Core/Controllers/MRPlayerController.h"
 #include "Kismet/GameplayStatics.h"
+
+AMRGameModeBase::AMRGameModeBase()
+{
+	// Setting up everything but BPs
+	PlayerControllerClass = AMRPlayerController::StaticClass();
+}
 
 void AMRGameModeBase::AnnounceWinner(int WinnerIndex)
 {

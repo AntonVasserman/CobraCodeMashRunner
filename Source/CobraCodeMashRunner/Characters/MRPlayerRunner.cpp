@@ -8,7 +8,7 @@
 AMRPlayerRunner::AMRPlayerRunner()
 {
 	// Setup Spring Arm Component
-	SpringArmComp = CreateDefaultSubobject<USpringArmComponent>(TEXT("Spring Arm Component"));
+	SpringArmComp = CreateDefaultSubobject<USpringArmComponent>(TEXT("Spring Arm"));
 	SpringArmComp->SetupAttachment(RootComponent);
 	SpringArmComp->SetRelativeLocation(FVector(350.f, 0.f, -100.f));
 	SpringArmComp->SetRelativeRotation(FRotator(0.f, -90.f, 0.f));
@@ -16,10 +16,12 @@ AMRPlayerRunner::AMRPlayerRunner()
 	SpringArmComp->bDoCollisionTest = false;
 
 	// Setup Camera Component
-	CameraComp = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera Component"));
+	CameraComp = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera"));
 	CameraComp->SetupAttachment(SpringArmComp);
 	CameraComp->PostProcessSettings.bOverride_AutoExposureMethod = true;
 	CameraComp->PostProcessSettings.AutoExposureMethod = AEM_Manual;
 	CameraComp->PostProcessSettings.bOverride_AutoExposureBias = true;
 	CameraComp->PostProcessSettings.AutoExposureBias = 10.2f;
+	CameraComp->SetProjectionMode(ECameraProjectionMode::Type::Orthographic);
+	CameraComp->SetAutoCalculateOrthoPlanes(false);
 }
