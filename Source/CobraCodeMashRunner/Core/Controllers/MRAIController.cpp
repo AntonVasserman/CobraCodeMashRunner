@@ -26,8 +26,12 @@ void AMRAIController::OnPossess(APawn* InPawn)
 
 void AMRAIController::SimulateInput()
 {
-	bInputFlipFlop ? PossessedCharacter->PowerLeft() : PossessedCharacter->PowerRight();
-	bInputFlipFlop = !bInputFlipFlop;
+	if (PossessedCharacter->CanRun())
+	{
+		bInputFlipFlop ? PossessedCharacter->PowerLeft() : PossessedCharacter->PowerRight();
+		bInputFlipFlop = !bInputFlipFlop;
+	}
+
 	FTimerHandle TimerHandle;
 	GetWorldTimerManager().SetTimer(TimerHandle, this, &AMRAIController::SimulateInput, FMath::RandRange(MinInputDelay, MaxInputDelay));
 }

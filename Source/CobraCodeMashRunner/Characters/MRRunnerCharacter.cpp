@@ -6,6 +6,7 @@
 #include "GameFramework/CharacterMovementComponent.h"
 #include "PaperFlipbookComponent.h"
 #include "CobraCodeMashRunner/Core/Controllers/MRAIController.h"
+#include "CobraCodeMashRunner/Core/GameModes/MRGameModeBase.h"
 #include "Kismet/GameplayStatics.h"
 
 AMRRunnerCharacter::AMRRunnerCharacter()
@@ -20,6 +21,19 @@ AMRRunnerCharacter::AMRRunnerCharacter()
 	GetCharacterMovement()->MaxWalkSpeed = 0.f;
 
 	AIControllerClass = AMRAIController::StaticClass();
+}
+
+void AMRRunnerCharacter::BeginPlay()
+{
+	Super::BeginPlay();
+	GameModeRef = Cast<AMRGameModeBase>(UGameplayStatics::GetGameMode(GetWorld()));
+	GameModeRef->OnWinnerAnnounced.AddDynamic(this, &AMRRunnerCharacter::OnWinnerAnnounced);
+	GameModeRef->OnRaceStarted.AddDynamic(this, &AMRRunnerCharacter::OnRaceStarted);
+}
+
+void AMRRunnerCharacter::OnRaceStarted()
+{
+	bCanRun = true;
 }
 
 void AMRRunnerCharacter::PowerLeft()
@@ -60,6 +74,11 @@ void AMRRunnerCharacter::UpdateFlipbook()
 	}
 }
 
+void AMRRunnerCharacter::OnWinnerAnnounced()
+{
+	bCanRun = false;
+}
+
 void AMRRunnerCharacter::Tick(float DeltaSeconds)
 {
 	Super::Tick(DeltaSeconds);
@@ -87,6 +106,12 @@ void AMRRunnerCharacter::Tick(float DeltaSeconds)
 void AMRRunnerCharacter::DecreaseSpeed(float SpeedMultiplier)
 {
 	const float CurrentMaxWalkSpeed = GetCharacterMovement()->MaxWalkSpeed;
+
+	if (!CanRun())
+	{
+		SpeedMultiplier *= 10.f;
+	}
+	
 	const float NewMaxWalkSpeed = CurrentMaxWalkSpeed - SpeedMultiplier * SpeedDecreaseCurve->GetFloatValue(CurrentMaxWalkSpeed);
 	GetCharacterMovement()->MaxWalkSpeed = FMath::Max(NewMaxWalkSpeed, 0.f);
 }

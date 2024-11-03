@@ -14,7 +14,11 @@ class COBRACODEMASHRUNNER_API AMRRunnerCharacter : public APaperCharacter
 
 public:
 	AMRRunnerCharacter();
-	
+
+	virtual void BeginPlay() override;
+	FORCEINLINE bool CanRun() const { return bCanRun; }
+	UFUNCTION()
+	void OnRaceStarted();
 	void PowerLeft();
 	void PowerRight();
 	virtual void Tick(float DeltaSeconds) override;
@@ -29,9 +33,12 @@ protected:
 	
 private:
 	bool bPlayFootstepSound = true;
+	bool bCanRun = false;
 	float MaxSpeed = 1500.f;
 	float SpeedIncreasePerTab = 50.f;
 	float SpeedDecreaseMultiplier = 250.f;
+	UPROPERTY()
+	class AMRGameModeBase* GameModeRef = nullptr;
 	UPROPERTY()
 	UCurveFloat* SpeedIncreaseCurve = UMashRunnerStatics::GetSpeedIncreaseCurveFloat();
 	UPROPERTY()
@@ -45,4 +52,6 @@ private:
 	void DecreaseSpeed(float SpeedMultiplier);
 	void IncreaseSpeed(float SpeedMultiplier);
 	void UpdateFlipbook();
+	UFUNCTION()
+	void OnWinnerAnnounced();
 };

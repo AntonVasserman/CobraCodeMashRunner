@@ -12,10 +12,24 @@ The Udemy Course: https://www.udemy.com/course/unreal-2d-course/
 
 ### Refactoring:
 
-TODO:~~~~
-Done:
+#### TODO:
+
+1. Change BP_Field to C++
+2. Use Ortho Camera
+3. Refactor GameMode to use GameState class and a State Enum + Events
+4. Transition everything Animation/Sound related to PaperZD
+
+#### Done:
 
 ### New Features:
 
-TODO:
-Done:
+#### TODO:
+
+1. Improve Ripped Goal so that lower part is in front of Runner
+2. Add Widgets, for RaceStart Counter and Winner Announced
+3. Add Jump and Slide mechanics together with Jump/Slide obstacles
+4. Add Main Menu and full GameLoop
+5. Add 2 Player Support (Art + Tech)
+6. Add Sound & FX
+
+#### Done:

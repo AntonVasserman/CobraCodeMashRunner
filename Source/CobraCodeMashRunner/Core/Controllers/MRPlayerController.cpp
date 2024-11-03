@@ -25,12 +25,18 @@ void AMRPlayerController::OnPossess(APawn* InPawn)
 
 void AMRPlayerController::RequestInputActionPowerLeft()
 {
-	PossessedCharacter->PowerLeft();
+	if (PossessedCharacter->CanRun())
+	{
+		PossessedCharacter->PowerLeft();
+	}
 }
 
 void AMRPlayerController::RequestInputActionPowerRight()
 {
-	PossessedCharacter->PowerRight();
+	if (PossessedCharacter->CanRun())
+	{
+		PossessedCharacter->PowerRight();
+	}
 }
 
 void AMRPlayerController::SetupInputComponent()

@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "InputMappingContext.h"
 #include "PaperFlipbook.h"
+#include "PaperSprite.h"
 #include "Sound/SoundCue.h"
 #include "MashRunnerStatics.generated.h"
 
@@ -22,6 +23,16 @@ public:
 	FORCEINLINE static USoundCue* GetFootstepsSoundCue()
 	{
 		return LoadObject<USoundCue>(nullptr, TEXT("/Game/MashRunner/Audio/Footsteps/A_Steps_Cue.A_Steps_Cue"));
+	}
+
+	FORCEINLINE static UPaperSprite* GetGoalConnectedSprite()
+	{
+		return LoadObject<UPaperSprite>(nullptr, TEXT("/Game/MashRunner/Art/Goal/SPR_Goal_Connected.SPR_Goal_Connected"));
+	}
+
+	FORCEINLINE static UPaperSprite* GetGoalRippedSprite()
+	{
+		return LoadObject<UPaperSprite>(nullptr, TEXT("/Game/MashRunner/Art/Goal/SPR_Goal_Ripped.SPR_Goal_Ripped"));
 	}
 	
 	FORCEINLINE static UInputAction* GetPowerLeftInputAction()
