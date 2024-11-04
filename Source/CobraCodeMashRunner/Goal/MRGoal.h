@@ -15,13 +15,13 @@ public:
 	AMRGoal();
 
 protected:
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, Category=Goal)
 	int LaneNumber = 0;
 
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, Category=Sprite)
 	class UPaperSpriteComponent* PaperSpriteComp;
 	
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, Category=Goal)
 	class UBoxComponent* BoxComp;
 
 	virtual void BeginPlay() override;

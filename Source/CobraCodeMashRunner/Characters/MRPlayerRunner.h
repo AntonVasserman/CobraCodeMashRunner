@@ -15,9 +15,9 @@ public:
 	AMRPlayerRunner();
 
 protected:
-	UPROPERTY(VisibleAnywhere)
+	UPROPERTY(VisibleAnywhere, Category=Camera)
 	class USpringArmComponent* SpringArmComp = nullptr;
 
-	UPROPERTY(VisibleAnywhere)
+	UPROPERTY(VisibleAnywhere, Category=Camera)
 	class UCameraComponent* CameraComp = nullptr;
 };
