@@ -3,23 +3,17 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "InputMappingContext.h"
 #include "PaperFlipbook.h"
 #include "PaperSprite.h"
 #include "Sound/SoundCue.h"
-#include "MashRunnerStatics.generated.h"
+#include "MRStatics.generated.h"
 
 UCLASS(MinimalAPI)
-class UMashRunnerStatics : public UBlueprintFunctionLibrary
+class UMRStatics : public UBlueprintFunctionLibrary
 {
 	GENERATED_BODY()
 
 public:
-	FORCEINLINE static UInputMappingContext* GetDefaultMappingContext()
-	{
-		return LoadObject<UInputMappingContext>(nullptr, TEXT("/Game/MashRunner/Core/Inputs/IMC_DefaultMappingContext.IMC_DefaultMappingContext"));
-	}
-
 	FORCEINLINE static USoundCue* GetFootstepsSoundCue()
 	{
 		return LoadObject<USoundCue>(nullptr, TEXT("/Game/MashRunner/Audio/Footsteps/A_Steps_Cue.A_Steps_Cue"));
@@ -33,16 +27,6 @@ public:
 	FORCEINLINE static UPaperSprite* GetGoalRippedSprite()
 	{
 		return LoadObject<UPaperSprite>(nullptr, TEXT("/Game/MashRunner/Art/Goal/SPR_Goal_Ripped.SPR_Goal_Ripped"));
-	}
-	
-	FORCEINLINE static UInputAction* GetPowerLeftInputAction()
-	{
-		return LoadObject<UInputAction>(nullptr, TEXT("/Game/MashRunner/Core/Inputs/Actions/IA_PowerLeft.IA_PowerLeft"));
-	}
-
-	FORCEINLINE static UInputAction* GetPowerRightInputAction()
-	{
-		return LoadObject<UInputAction>(nullptr, TEXT("/Game/MashRunner/Core/Inputs/Actions/IA_PowerRight.IA_PowerRight"));
 	}
 	
 	FORCEINLINE static UPaperFlipbook* GetRunnerIdlePaperFlipbook()

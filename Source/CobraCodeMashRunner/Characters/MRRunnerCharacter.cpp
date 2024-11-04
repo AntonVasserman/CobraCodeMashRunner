@@ -2,7 +2,7 @@
 
 #include "MRRunnerCharacter.h"
 
-#include "CobraCodeMashRunner/Core/Utility/MashRunnerStatics.h"
+#include "CobraCodeMashRunner/Core/Utility/MRStatics.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "PaperFlipbookComponent.h"
 #include "CobraCodeMashRunner/Core/Controllers/MRAIController.h"
@@ -14,7 +14,7 @@ AMRRunnerCharacter::AMRRunnerCharacter()
 	PrimaryActorTick.bCanEverTick = true;
 	
 	// Setup PaperFlipbookComponent
-	GetSprite()->SetFlipbook(UMashRunnerStatics::GetRunnerIdlePaperFlipbook());
+	GetSprite()->SetFlipbook(UMRStatics::GetRunnerIdlePaperFlipbook());
 	GetSprite()->SetRelativeLocation(FVector(0.f, 0.f, 30.f));
 	
 	// Setup Character Movement Component
@@ -61,10 +61,10 @@ void AMRRunnerCharacter::UpdateFlipbook()
 	// TODO (Refactor): Change this to not run on every tick but only when speed actually changes
 	GetSprite()->SetFlipbook(
 		GetCharacterMovement()->Velocity.Length() > 0.f ?
-			UMashRunnerStatics::GetRunnerRunPaperFlipbook() :
-			UMashRunnerStatics::GetRunnerIdlePaperFlipbook());
+			UMRStatics::GetRunnerRunPaperFlipbook() :
+			UMRStatics::GetRunnerIdlePaperFlipbook());
 	// TODO (Refactor): Change this to a bool for simpler checking
-	if (GetSprite()->GetFlipbook() == UMashRunnerStatics::GetRunnerRunPaperFlipbook())
+	if (GetSprite()->GetFlipbook() == UMRStatics::GetRunnerRunPaperFlipbook())
 	{
 		GetSprite()->SetPlayRate(GetCharacterMovement()->MaxWalkSpeed / MaxSpeed);
 	}
@@ -88,7 +88,7 @@ void AMRRunnerCharacter::Tick(float DeltaSeconds)
 	UpdateFlipbook();
 	
 	// TODO (Refactor): Change this to a bool for simpler checking
-	if (GetSprite()->GetFlipbook() == UMashRunnerStatics::GetRunnerRunPaperFlipbook() &&
+	if (GetSprite()->GetFlipbook() == UMRStatics::GetRunnerRunPaperFlipbook() &&
 		(GetSprite()->GetPlaybackPositionInFrames() == 1 || GetSprite()->GetPlaybackPositionInFrames() == 5))
 	{
 		if (bPlayFootstepSound)

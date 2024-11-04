@@ -4,7 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "PaperCharacter.h"
-#include "CobraCodeMashRunner/Core/Utility/MashRunnerStatics.h"
+#include "CobraCodeMashRunner/Core/Utility/MRStatics.h"
 #include "MRRunnerCharacter.generated.h"
 
 UCLASS()
@@ -40,11 +40,11 @@ private:
 	UPROPERTY()
 	class AMRGameModeBase* GameModeRef = nullptr;
 	UPROPERTY()
-	UCurveFloat* SpeedIncreaseCurve = UMashRunnerStatics::GetSpeedIncreaseCurveFloat();
+	UCurveFloat* SpeedIncreaseCurve = UMRStatics::GetSpeedIncreaseCurveFloat();
 	UPROPERTY()
-	UCurveFloat* SpeedDecreaseCurve = UMashRunnerStatics::GetSpeedDecreaseCurveFloat();
+	UCurveFloat* SpeedDecreaseCurve = UMRStatics::GetSpeedDecreaseCurveFloat();
 	UPROPERTY()
-	USoundCue* FootstepsSoundCue = UMashRunnerStatics::GetFootstepsSoundCue();
+	USoundCue* FootstepsSoundCue = UMRStatics::GetFootstepsSoundCue();
 
 	// TODO (Refactor): Move this to the PlayerController
 	EInput LastInput = EInput::None;

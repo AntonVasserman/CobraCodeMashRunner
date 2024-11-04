@@ -4,7 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "InputMappingContext.h"
-#include "CobraCodeMashRunner/Core/Utility/MashRunnerStatics.h"
+#include "CobraCodeMashRunner/Core/Utility/MRInputStatics.h"
 #include "GameFramework/PlayerController.h"
 #include "MRPlayerController.generated.h"
 
@@ -15,13 +15,13 @@ class COBRACODEMASHRUNNER_API AMRPlayerController : public APlayerController
 
 protected:
 	UPROPERTY()
-	UInputMappingContext* DefaultMappingContext = UMashRunnerStatics::GetDefaultMappingContext();
+	UInputMappingContext* DefaultMappingContext = UMRInputStatics::GetDefaultMappingContext();
 
 	UPROPERTY()
-	UInputAction* InputActionPowerLeft = UMashRunnerStatics::GetPowerLeftInputAction();
+	UInputAction* InputActionPowerLeft = UMRInputStatics::GetPowerLeftInputAction();
 
 	UPROPERTY()
-	UInputAction* InputActionPowerRight = UMashRunnerStatics::GetPowerRightInputAction();
+	UInputAction* InputActionPowerRight = UMRInputStatics::GetPowerRightInputAction();
 	
 	virtual void BeginPlay() override;
 	virtual void OnPossess(APawn* InPawn) override;

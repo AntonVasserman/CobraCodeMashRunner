@@ -5,7 +5,7 @@
 #include "PaperSpriteComponent.h"
 #include "CobraCodeMashRunner/Characters/MRRunnerCharacter.h"
 #include "CobraCodeMashRunner/Core/GameModes/MRGameModeBase.h"
-#include "CobraCodeMashRunner/Core/Utility/MashRunnerStatics.h"
+#include "CobraCodeMashRunner/Core/Utility/MRStatics.h"
 #include "Components/BoxComponent.h"
 #include "Kismet/GameplayStatics.h"
 
@@ -16,7 +16,7 @@ AMRGoal::AMRGoal()
 	// Setup Paper Sprite Component
 	PaperSpriteComp = CreateDefaultSubobject<UPaperSpriteComponent>(TEXT("Paper Sprite"));
 	PaperSpriteComp->SetupAttachment(RootComponent);
-	PaperSpriteComp->SetSprite(UMashRunnerStatics::GetGoalConnectedSprite());
+	PaperSpriteComp->SetSprite(UMRStatics::GetGoalConnectedSprite());
 
 	// Setup Box Collision Component
 	BoxComp = CreateDefaultSubobject<UBoxComponent>(TEXT("Box"));
@@ -41,7 +41,7 @@ void AMRGoal::OnComponentBeginOverlap(UPrimitiveComponent* OverlappedComponent, 
 		if (AMRRunnerCharacter* RunnerCharacter = Cast<AMRRunnerCharacter>(OtherActor);
 			IsValid(RunnerCharacter))
 		{
-			PaperSpriteComp->SetSprite(UMashRunnerStatics::GetGoalRippedSprite());
+			PaperSpriteComp->SetSprite(UMRStatics::GetGoalRippedSprite());
 			bRipped = true;
 			GameModeRef->AnnounceWinner(LaneNumber);
 		}
