@@ -6,7 +6,7 @@
 #include "GameFramework/CharacterMovementComponent.h"
 #include "PaperFlipbookComponent.h"
 #include "CobraCodeMashRunner/Core/Controllers/MRAIController.h"
-#include "CobraCodeMashRunner/Core/GameModes/MRGameModeBase.h"
+#include "CobraCodeMashRunner/Core/GameModes/GameStates/MRGameStateBase.h"
 #include "Kismet/GameplayStatics.h"
 
 AMRRunnerCharacter::AMRRunnerCharacter()
@@ -26,34 +26,18 @@ AMRRunnerCharacter::AMRRunnerCharacter()
 void AMRRunnerCharacter::BeginPlay()
 {
 	Super::BeginPlay();
-	GameModeRef = Cast<AMRGameModeBase>(UGameplayStatics::GetGameMode(GetWorld()));
-	GameModeRef->OnWinnerAnnounced.AddDynamic(this, &AMRRunnerCharacter::OnWinnerAnnounced);
-	GameModeRef->OnRaceStarted.AddDynamic(this, &AMRRunnerCharacter::OnRaceStarted);
-}
-
-void AMRRunnerCharacter::OnRaceStarted()
-{
-	bCanRun = true;
+	GameStateRef = GetWorld()->GetGameState<AMRGameStateBase>();
+	GameStateRef->OnPhaseChanged.AddDynamic(this, &AMRRunnerCharacter::OnPhaseChanged);
 }
 
 void AMRRunnerCharacter::PowerLeft()
 {
-	// TODO (Refactor): Move this to the PlayerController
-	if (LastInput != EInput::Left)
-	{
-		IncreaseSpeed(SpeedIncreasePerTab);
-		LastInput = EInput::Left;
-	}
+	IncreaseSpeed(SpeedIncreasePerTab);
 }
 
 void AMRRunnerCharacter::PowerRight()
 {
-	// TODO (Refactor): Move this to the PlayerController
-	if (LastInput != EInput::Right)
-	{
-		IncreaseSpeed(SpeedIncreasePerTab);
-		LastInput = EInput::Right;
-	}
+	IncreaseSpeed(SpeedIncreasePerTab);
 }
 
 void AMRRunnerCharacter::UpdateFlipbook()
@@ -74,9 +58,19 @@ void AMRRunnerCharacter::UpdateFlipbook()
 	}
 }
 
-void AMRRunnerCharacter::OnWinnerAnnounced()
+void AMRRunnerCharacter::OnPhaseChanged(EMRPhase NewPhase)
 {
-	bCanRun = false;
+	switch (NewPhase)
+	{
+	case EMRPhase::InProgress:
+		bCanRun = true;
+		break;
+	case EMRPhase::Finished:
+		bCanRun = false;
+		break;
+	default:
+		break;
+	}
 }
 
 void AMRRunnerCharacter::Tick(float DeltaSeconds)

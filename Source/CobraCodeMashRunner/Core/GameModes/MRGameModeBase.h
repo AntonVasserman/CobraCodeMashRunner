@@ -6,27 +6,22 @@
 #include "GameFramework/GameModeBase.h"
 #include "MRGameModeBase.generated.h"
 
-DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnRaceStarted);
-DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnWinnerAnnounced);
-
 UCLASS()
 class COBRACODEMASHRUNNER_API AMRGameModeBase : public AGameModeBase
 {
 	GENERATED_BODY()
 
 public:
-	FOnRaceStarted OnRaceStarted;
-	FOnWinnerAnnounced OnWinnerAnnounced;
-	
 	AMRGameModeBase();
-	
-	void AnnounceWinner(int WinnerIndex);
-	void RestartCurrentLevel();
-	void StartRace();
 
 protected:
 	virtual void BeginPlay() override;
 
 private:
 	bool bRaceOver = false;
+
+	UFUNCTION()
+	void OnRipped(int WinnerIndex);
+	void RestartCurrentLevel();
+	void StartRace();
 };

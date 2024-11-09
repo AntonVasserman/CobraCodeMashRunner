@@ -5,7 +5,8 @@ As a challenge to practice and improve my C++ and Coding in Unreal Engine, this 
 
 ## References
 
-Cobra Code on Udemy: https://www.udemy.com/user/stephen-knall-2/ <br>
+Cobra Code on Udemy: https://www.udemy.com/user/stephen-knall-2/
+
 The Udemy Course: https://www.udemy.com/course/unreal-2d-course/
 
 ## Additional Features (not included in the course)
@@ -15,11 +16,12 @@ The Udemy Course: https://www.udemy.com/course/unreal-2d-course/
 #### TODO:
 
 1. Change BP_Field to C++
-2. Use Ortho Camera
-3. Refactor GameMode to use GameState class and a State Enum + Events
-4. Transition everything Animation/Sound related to PaperZD
+2. Refactor GameMode to use GameState class and a State Enum + Events
+3. Transition everything Animation/Sound related to PaperZD
 
 #### Done:
+
+1. Use Ortho Camera
 
 ### New Features:
 

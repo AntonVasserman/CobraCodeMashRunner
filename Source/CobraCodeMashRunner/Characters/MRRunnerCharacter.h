@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "PaperCharacter.h"
+#include "CobraCodeMashRunner/Core/GameModes/MRPhase.h"
 #include "CobraCodeMashRunner/Core/Utility/MRStatics.h"
 #include "MRRunnerCharacter.generated.h"
 
@@ -15,22 +16,13 @@ class COBRACODEMASHRUNNER_API AMRRunnerCharacter : public APaperCharacter
 public:
 	AMRRunnerCharacter();
 
+	
 	virtual void BeginPlay() override;
 	FORCEINLINE bool CanRun() const { return bCanRun; }
-	UFUNCTION()
-	void OnRaceStarted();
 	void PowerLeft();
 	void PowerRight();
 	virtual void Tick(float DeltaSeconds) override;
 
-protected:
-	enum class EInput
-	{
-		None	UMETA(DisplayName = "None"),
-		Left	UMETA(DisplayName = "Left"),
-		Right	UMETA(DisplayName = "Right"),
-	};
-	
 private:
 	bool bPlayFootstepSound = true;
 	bool bCanRun = false;
@@ -38,7 +30,7 @@ private:
 	float SpeedIncreasePerTab = 50.f;
 	float SpeedDecreaseMultiplier = 250.f;
 	UPROPERTY()
-	class AMRGameModeBase* GameModeRef = nullptr;
+	class AMRGameStateBase* GameStateRef = nullptr;
 	UPROPERTY()
 	UCurveFloat* SpeedIncreaseCurve = UMRStatics::GetSpeedIncreaseCurveFloat();
 	UPROPERTY()
@@ -46,12 +38,9 @@ private:
 	UPROPERTY()
 	USoundCue* FootstepsSoundCue = UMRStatics::GetFootstepsSoundCue();
 
-	// TODO (Refactor): Move this to the PlayerController
-	EInput LastInput = EInput::None;
-
 	void DecreaseSpeed(float SpeedMultiplier);
 	void IncreaseSpeed(float SpeedMultiplier);
 	void UpdateFlipbook();
 	UFUNCTION()
-	void OnWinnerAnnounced();
+	void OnPhaseChanged(EMRPhase NewPhase);
 };

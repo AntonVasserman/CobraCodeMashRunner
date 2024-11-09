@@ -14,6 +14,13 @@ class COBRACODEMASHRUNNER_API AMRPlayerController : public APlayerController
 	GENERATED_BODY()
 
 protected:
+	enum class EInput
+	{
+		None	UMETA(DisplayName = "None"),
+		Left	UMETA(DisplayName = "Left"),
+		Right	UMETA(DisplayName = "Right"),
+	};
+
 	UPROPERTY()
 	UInputMappingContext* DefaultMappingContext = UMRInputStatics::GetDefaultMappingContext();
 
@@ -30,6 +37,7 @@ protected:
 	virtual void SetupInputComponent() override;
 
 private:
+	EInput LastInput = EInput::None;
 	UPROPERTY()
 	class AMRRunnerCharacter* PossessedCharacter = nullptr;
 };

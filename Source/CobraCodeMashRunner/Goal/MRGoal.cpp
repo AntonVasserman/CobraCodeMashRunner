@@ -43,7 +43,7 @@ void AMRGoal::OnComponentBeginOverlap(UPrimitiveComponent* OverlappedComponent, 
 		{
 			PaperSpriteComp->SetSprite(UMRStatics::GetGoalRippedSprite());
 			bRipped = true;
-			GameModeRef->AnnounceWinner(LaneNumber);
+			OnRipped.Broadcast(LaneIndex);
 		}
 	}
 }
