@@ -1,7 +1,11 @@
 # Mash Runner (with C++)
 This is a Repository for Mash Runner, a Game Project from Cobra Code's Udemy course.
 
-As a challenge to practice and improve my C++ and Coding in Unreal Engine, this project is done using C++ rather than Blueprints.
+As an exercise to improve my C++ in Unreal Engine, this project is done using C++ rather than only Blueprints.
+
+In addition, as an exercise to improve my Game Programmering skills, this project includes:
+* Refactorings: Different code structure and implementation of existing features
+* New Features: Additions on top of the initial project to expand the gameplay
 
 ## References
 
@@ -34,4 +38,6 @@ The Udemy Course: https://www.udemy.com/course/unreal-2d-course/
 5. Add 2 Player Support (Art + Tech)
 6. Add Sound & FX
 
-#### Done:
+<!--
+Done:
+-->
