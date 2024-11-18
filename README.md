@@ -17,14 +17,9 @@ The Udemy Course: https://www.udemy.com/course/unreal-2d-course/
 
 ### Refactoring:
 
-#### TODO:
-
-1. Transition everything Animation/Sound related to PaperZD
-
-#### Done:
-
 1. Use Ortho Camera
 2. Refactor GameMode to use GameState class and a State Enum + Events
+3. Added usage of PaperZD
 
 ### New Features:
 
