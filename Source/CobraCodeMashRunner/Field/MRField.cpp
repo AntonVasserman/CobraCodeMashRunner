@@ -11,14 +11,6 @@ AMRField::AMRField()
 	RootSceneComp = CreateDefaultSubobject<USceneComponent>(TEXT("Root"));
 	RootComponent = RootSceneComp;
 
-	// Setup the Stage Sprite Components
-	for (int i = 0; i < SpritesCount; i++)
-	{
-		// StageSpriteComps.Add(CreateDefaultSubobject<UPaperSpriteComponent>(FName(FString::Printf(TEXT("Stage Paper Sprite %d"), i))));
-		// StageSpriteComps[i]->SetSprite(UMRStatics::GetFieldStageSprite());
-		// StageSpriteComps[i]->SetupAttachment(RootSceneComp);
-	}
-
 	// Setup the Collision Boxes
 	TopBoxComp = CreateDefaultSubobject<UBoxComponent>("Top Box");
 	TopBoxComp->SetCollisionProfileName(UMRStatics::GetCollisionProfileNameBlockAll());
