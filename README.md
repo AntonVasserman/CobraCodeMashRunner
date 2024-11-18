@@ -19,8 +19,7 @@ The Udemy Course: https://www.udemy.com/course/unreal-2d-course/
 
 #### TODO:
 
-1. Change BP_Field to C++
-3. Transition everything Animation/Sound related to PaperZD
+1. Transition everything Animation/Sound related to PaperZD
 
 #### Done:
 

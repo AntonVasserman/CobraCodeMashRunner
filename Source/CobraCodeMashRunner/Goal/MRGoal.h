@@ -18,14 +18,14 @@ public:
 	
 	AMRGoal();
 
-protected:
 	UPROPERTY(EditAnywhere, Category = "Config | Goal")
 	int LaneIndex = 0;
 
-	UPROPERTY(EditAnywhere, Category = "Config | Sprite")
+protected:
+	UPROPERTY(VisibleAnywhere, Category = "Sprite")
 	class UPaperSpriteComponent* PaperSpriteComp;
 	
-	UPROPERTY(EditAnywhere, Category = "Config | Goal")
+	UPROPERTY(VisibleAnywhere, Category = "Goal")
 	class UBoxComponent* BoxComp;
 
 	virtual void BeginPlay() override;

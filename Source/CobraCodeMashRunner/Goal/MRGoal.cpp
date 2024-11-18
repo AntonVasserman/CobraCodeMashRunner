@@ -15,7 +15,7 @@ AMRGoal::AMRGoal()
 
 	// Setup Paper Sprite Component
 	PaperSpriteComp = CreateDefaultSubobject<UPaperSpriteComponent>(TEXT("Paper Sprite"));
-	PaperSpriteComp->SetupAttachment(RootComponent);
+	RootComponent = PaperSpriteComp;
 	PaperSpriteComp->SetSprite(UMRStatics::GetGoalConnectedSprite());
 
 	// Setup Box Collision Component
