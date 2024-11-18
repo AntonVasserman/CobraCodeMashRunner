@@ -1,7 +1,6 @@
 // Copyright Anton Vasserman, All Rights Reserved.
 
 #include "MRRunnerCharacter.h"
-
 #include "CobraCodeMashRunner/Core/Utility/MRStatics.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "PaperFlipbookComponent.h"
@@ -29,6 +28,7 @@ AMRRunnerCharacter::AMRRunnerCharacter()
 void AMRRunnerCharacter::BeginPlay()
 {
 	Super::BeginPlay();
+
 	GameStateRef = GetWorld()->GetGameState<AMRGameStateBase>();
 	GameStateRef->OnPhaseChanged.AddDynamic(this, &AMRRunnerCharacter::OnPhaseChanged);
 }

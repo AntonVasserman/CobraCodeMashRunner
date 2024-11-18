@@ -1,7 +1,6 @@
 // Copyright Anton Vasserman, All Rights Reserved.
 
 #include "MRAIController.h"
-
 #include "CobraCodeMashRunner/Characters/MRRunnerCharacter.h"
 
 AMRAIController::AMRAIController()

@@ -1,7 +1,6 @@
 // Copyright Anton Vasserman, All Rights Reserved.
 
 #include "MRPlayerRunner.h"
-
 #include "Camera/CameraComponent.h"
 #include "GameFramework/SpringArmComponent.h"
 

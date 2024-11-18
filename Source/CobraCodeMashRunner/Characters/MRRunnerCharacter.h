@@ -38,8 +38,6 @@ private:
 	UCurveFloat* SpeedIncreaseCurve = UMRStatics::GetSpeedIncreaseCurveFloat();
 	UPROPERTY()
 	UCurveFloat* SpeedDecreaseCurve = UMRStatics::GetSpeedDecreaseCurveFloat();
-	UPROPERTY()
-	USoundCue* FootstepsSoundCue = UMRStatics::GetFootstepsSoundCue();
 
 	void DecreaseSpeed(float SpeedMultiplier);
 	void IncreaseSpeed(float SpeedMultiplier);

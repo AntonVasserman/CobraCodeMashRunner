@@ -1,7 +1,6 @@
 // Copyright Anton Vasserman, All Rights Reserved.
 
 #include "MRGoal.h"
-
 #include "PaperSpriteComponent.h"
 #include "CobraCodeMashRunner/Characters/MRRunnerCharacter.h"
 #include "CobraCodeMashRunner/Core/GameModes/MRGameModeBase.h"

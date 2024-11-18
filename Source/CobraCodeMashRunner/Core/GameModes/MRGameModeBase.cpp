@@ -1,7 +1,6 @@
 // Copyright Anton Vasserman, All Rights Reserved.
 
 #include "MRGameModeBase.h"
-
 #include "CobraCodeMashRunner/Core/Controllers/MRPlayerController.h"
 #include "CobraCodeMashRunner/Goal/MRGoal.h"
 #include "GameStates/MRGameStateBase.h"

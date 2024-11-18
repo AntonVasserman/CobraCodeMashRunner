@@ -21,11 +21,6 @@ public:
 	{
 		return LoadObject<UPaperSprite>(nullptr, TEXT("/Game/MashRunner/Art/Background/SPR_Field.SPR_Field"));
 	}
-	
-	FORCEINLINE static USoundCue* GetFootstepsSoundCue()
-	{
-		return LoadObject<USoundCue>(nullptr, TEXT("/Game/MashRunner/Audio/Footsteps/A_Steps_Cue.A_Steps_Cue"));
-	}
 
 	FORCEINLINE static UPaperSprite* GetGoalConnectedSprite()
 	{
