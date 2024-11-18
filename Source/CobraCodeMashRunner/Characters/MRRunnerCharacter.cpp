@@ -5,9 +5,9 @@
 #include "CobraCodeMashRunner/Core/Utility/MRStatics.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "PaperFlipbookComponent.h"
+#include "PaperZDAnimationComponent.h"
 #include "CobraCodeMashRunner/Core/Controllers/MRAIController.h"
 #include "CobraCodeMashRunner/Core/GameModes/GameStates/MRGameStateBase.h"
-#include "Kismet/GameplayStatics.h"
 
 AMRRunnerCharacter::AMRRunnerCharacter()
 {
@@ -21,6 +21,9 @@ AMRRunnerCharacter::AMRRunnerCharacter()
 	GetCharacterMovement()->MaxWalkSpeed = 0.f;
 
 	AIControllerClass = AMRAIController::StaticClass();
+
+	// Setup PaperZD Animation Instance Class
+	GetAnimationComponent()->SetAnimInstanceClass(UMRStatics::GetRunnerAnimationBlueprintClass());
 }
 
 void AMRRunnerCharacter::BeginPlay()
@@ -38,24 +41,6 @@ void AMRRunnerCharacter::PowerLeft()
 void AMRRunnerCharacter::PowerRight()
 {
 	IncreaseSpeed(SpeedIncreasePerTab);
-}
-
-void AMRRunnerCharacter::UpdateFlipbook()
-{
-	// TODO (Refactor): Change this to not run on every tick but only when speed actually changes
-	GetSprite()->SetFlipbook(
-		GetCharacterMovement()->Velocity.Length() > 0.f ?
-			UMRStatics::GetRunnerRunPaperFlipbook() :
-			UMRStatics::GetRunnerIdlePaperFlipbook());
-	// TODO (Refactor): Change this to a bool for simpler checking
-	if (GetSprite()->GetFlipbook() == UMRStatics::GetRunnerRunPaperFlipbook())
-	{
-		GetSprite()->SetPlayRate(GetCharacterMovement()->MaxWalkSpeed / MaxSpeed);
-	}
-	else
-	{
-		GetSprite()->SetPlayRate(1.f);
-	}
 }
 
 void AMRRunnerCharacter::OnPhaseChanged(EMRPhase NewPhase)
@@ -79,22 +64,6 @@ void AMRRunnerCharacter::Tick(float DeltaSeconds)
 
 	AddMovementInput(FVector(1.f, 0.f, 0.f), 1.f);
 	DecreaseSpeed(SpeedDecreaseMultiplier * DeltaSeconds);
-	UpdateFlipbook();
-	
-	// TODO (Refactor): Change this to a bool for simpler checking
-	if (GetSprite()->GetFlipbook() == UMRStatics::GetRunnerRunPaperFlipbook() &&
-		(GetSprite()->GetPlaybackPositionInFrames() == 1 || GetSprite()->GetPlaybackPositionInFrames() == 5))
-	{
-		if (bPlayFootstepSound)
-		{
-			UGameplayStatics::PlaySound2D(GetWorld(), FootstepsSoundCue);
-			bPlayFootstepSound = false;
-		}
-	}
-	else
-	{
-		bPlayFootstepSound = true;
-	}
 }
 
 void AMRRunnerCharacter::DecreaseSpeed(float SpeedMultiplier)

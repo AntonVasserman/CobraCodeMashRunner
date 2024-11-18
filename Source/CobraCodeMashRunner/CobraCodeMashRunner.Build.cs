@@ -8,7 +8,7 @@ public class CobraCodeMashRunner : ModuleRules
 	{
 		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
 	
-		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "EnhancedInput", "InputCore", "Paper2D" });
+		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "EnhancedInput", "InputCore", "Paper2D", "PaperZD" });
 
 		PrivateDependencyModuleNames.AddRange(new string[] { "AIModule" });
 

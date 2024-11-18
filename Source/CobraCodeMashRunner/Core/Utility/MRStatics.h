@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "PaperFlipbook.h"
 #include "PaperSprite.h"
+#include "PaperZDAnimInstance.h"
 #include "Sound/SoundCue.h"
 #include "MRStatics.generated.h"
 
@@ -44,6 +45,11 @@ public:
 	FORCEINLINE static UPaperFlipbook* GetRunnerRunPaperFlipbook()
 	{
 		return LoadObject<UPaperFlipbook>(nullptr, TEXT("/Game/MashRunner/Art/Characters/PFB_Runner_Run.PFB_Runner_Run"));
+	}
+
+	FORCEINLINE static TSubclassOf<UPaperZDAnimInstance> GetRunnerAnimationBlueprintClass()
+	{
+		return ConstructorHelpers::FClassFinder<UPaperZDAnimInstance>(TEXT("/Game/MashRunner/Characters/ABP_Runner_2D.ABP_Runner_2D_C")).Class;
 	}
 
 	FORCEINLINE static UCurveFloat* GetSpeedDecreaseCurveFloat()

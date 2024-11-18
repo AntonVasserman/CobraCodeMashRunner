@@ -3,30 +3,33 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "PaperCharacter.h"
+#include "PaperZDCharacter.h"
 #include "CobraCodeMashRunner/Core/GameModes/MRPhase.h"
 #include "CobraCodeMashRunner/Core/Utility/MRStatics.h"
 #include "MRRunnerCharacter.generated.h"
 
 UCLASS()
-class COBRACODEMASHRUNNER_API AMRRunnerCharacter : public APaperCharacter
+class COBRACODEMASHRUNNER_API AMRRunnerCharacter : public APaperZDCharacter
 {
 	GENERATED_BODY()
 
 public:
 	AMRRunnerCharacter();
-
 	
 	virtual void BeginPlay() override;
 	FORCEINLINE bool CanRun() const { return bCanRun; }
+	UFUNCTION(BlueprintCallable)
+	FORCEINLINE bool IsRunning() const { return GetVelocity().Length() > 0.0f; }
 	void PowerLeft();
 	void PowerRight();
 	virtual void Tick(float DeltaSeconds) override;
 
-private:
-	bool bPlayFootstepSound = true;
-	bool bCanRun = false;
+protected:
+	UPROPERTY(BlueprintReadOnly)
 	float MaxSpeed = 1500.f;
+	
+private:
+	bool bCanRun = false;
 	float SpeedIncreasePerTab = 50.f;
 	float SpeedDecreaseMultiplier = 250.f;
 	UPROPERTY()
@@ -40,7 +43,6 @@ private:
 
 	void DecreaseSpeed(float SpeedMultiplier);
 	void IncreaseSpeed(float SpeedMultiplier);
-	void UpdateFlipbook();
 	UFUNCTION()
 	void OnPhaseChanged(EMRPhase NewPhase);
 };
