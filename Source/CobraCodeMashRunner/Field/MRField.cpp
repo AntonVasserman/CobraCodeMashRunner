@@ -1,6 +1,7 @@
 // Copyright Anton Vasserman, All Rights Reserved.
 
 #include "MRField.h"
+#include "AVCollisionProfileStatics.h"
 #include "PaperSpriteComponent.h"
 #include "CobraCodeMashRunner/Core/Utility/MRStatics.h"
 #include "Components/BoxComponent.h"
@@ -13,10 +14,10 @@ AMRField::AMRField()
 
 	// Setup the Collision Boxes
 	TopBoxComp = CreateDefaultSubobject<UBoxComponent>("Top Box");
-	TopBoxComp->SetCollisionProfileName(UMRStatics::GetCollisionProfileNameBlockAll());
+	TopBoxComp->SetCollisionProfileName(UAVCollisionProfileStatics::BlockAll_ProfileName);
 	TopBoxComp->SetupAttachment(RootComponent);
 	BottomBoxComp = CreateDefaultSubobject<UBoxComponent>("Bottom Box");
-	BottomBoxComp->SetCollisionProfileName(UMRStatics::GetCollisionProfileNameBlockAll());
+	BottomBoxComp->SetCollisionProfileName(UAVCollisionProfileStatics::BlockAll_ProfileName);
 	BottomBoxComp->SetupAttachment(RootComponent);
 
 	// Setup the Goals

@@ -8,9 +8,9 @@ public class CobraCodeMashRunner : ModuleRules
 	{
 		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
 	
-		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "EnhancedInput", "InputCore", "Paper2D", "PaperZD" });
+		PublicDependencyModuleNames.AddRange(new string[] { "AVUtilities", "Core", "CoreUObject", "Engine", "EnhancedInput", "InputCore", "Paper2D", "PaperZD" });
 
-		PrivateDependencyModuleNames.AddRange(new string[] { "AIModule" });
+		PrivateDependencyModuleNames.AddRange(new string[] { "AIModule", });
 
 		// Uncomment if you are using Slate UI
 		// PrivateDependencyModuleNames.AddRange(new string[] { "Slate", "SlateCore" });

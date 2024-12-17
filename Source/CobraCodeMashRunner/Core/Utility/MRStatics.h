@@ -15,8 +15,6 @@ class UMRStatics : public UBlueprintFunctionLibrary
 	GENERATED_BODY()
 
 public:
-	FORCEINLINE static FName GetCollisionProfileNameBlockAll() { return FName("BlockAll"); }
-
 	FORCEINLINE static UPaperSprite* GetFieldStageSprite()
 	{
 		return LoadObject<UPaperSprite>(nullptr, TEXT("/Game/MashRunner/Art/Background/SPR_Field.SPR_Field"));
